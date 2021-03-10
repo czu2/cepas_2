@@ -1,0 +1,33 @@
+<h1>Registro de cata de vinos</h1>
+
+<% if current_user && current_user.email == 'peter@vinos.com' %>
+    <%= render 'owner' %>
+<% end %>
+
+<h2>Listado de vinos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cepas</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @wines.each do |wine| %>
+            <tr>
+                <td><%= wine.name %></td>
+                <td>
+                    <ul>
+                        <% wine.wine_strains.each do |wine_strain| %>
+                            <li><%= wine_strain.strain.name %>(<%= wine_strain.percent %>%)</li>
+                        <% end %>
+                    </ul>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+
+</table>
+

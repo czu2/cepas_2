@@ -1,0 +1,10 @@
+.navbar{
+    background-color:rebeccapurple;
+}
+
+.footer{
+    /* background-color: #28527a; */
+    background-color:rebeccapurple;
+    position: fixed;
+    bottom: 0px;
+}

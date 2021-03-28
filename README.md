@@ -1,24 +1,18 @@
-# README
+# VinoTK
+Para acceder a la aplicación, es necesario ejecutar el archivo seed.rb
+Este archivo contiene los accesos de Peter y sus amigos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Accesos
 
-Things you may want to cover:
+name: Peter
+email: peter@vinotk.cl,
+password: qwerty123,
+admin: true
 
-* Ruby version
+name: Amigo Uno,
+email: amigouno@mail.com,
+password: qwerty123
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+name: Amigo Dos,
+email: amigodos@mail.com,
+password: qwerty123

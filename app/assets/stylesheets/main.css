@@ -3,8 +3,8 @@
 }
 
 .footer{
-    /* background-color: #28527a; */
+    margin-top: 100px;
     background-color:rebeccapurple;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0px;
 }

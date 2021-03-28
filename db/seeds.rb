@@ -7,32 +7,78 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# Strain.create!(
-#     [
-#         {
-#             name: 'Cabernet Sauvignon'
-#         },
-#         {
-#             name: 'Sauvignon blanc'
-#         },
-#         {
-#             name: 'Carmenere'
-#         },
-#         {
-#             name: 'Merlot'
-#         },
-#         {
-#             name: 'Syrah'
-#         }
-#     ]
-# )
+User.destroy_all
+WineStrain.destroy_all
+Wine.destroy_all
+Strain.destroy_all
+
+Strain.create!(
+    [
+        {
+            name: 'Cabernet Sauvignon'
+        },
+        {
+            name: 'Cabernet Franc'
+        },
+        {
+            name: 'Syrah'
+        },
+        {
+            name: 'Tannat'
+        },
+        {
+            name: 'Malbec'
+        },
+        {
+            name: 'Bonarda'
+        },
+        {
+            name: 'Petit Verdot'
+        },
+        {
+            name: 'Merlot'
+        },
+        {
+            name: 'Carmenere'
+        },
+        {
+            name: 'Sangiovese'
+        },
+        {
+            name: 'Tempranillo'
+        },
+        {
+            name: 'Marselan'
+        },
+        {
+            name: 'Pinot Noir'
+        },
+        {
+            name: 'Carignan'
+        },
+        {
+            name: 'Cinsaunt'
+        }
+    ]
+)
 
 User.create!(
     [
         {
             name: 'Peter',
-            email: 'peter@cav.cl'
-            encrypted_password: 'qwerty'
+            email: 'peter@vinotk.cl',
+            password: 'qwerty123',
+            admin: 'true'
+        },
+        {
+            name: 'Amigo Uno',
+            email: 'amigouno@mail.com',
+            password: 'qwerty123'
+        },
+        {
+            name: 'Amigo Dos',
+            email: 'amigodos@mail.com',
+            password: 'qwerty123'
         }
     ]
 )

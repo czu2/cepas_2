@@ -1,0 +1,38 @@
+<% if @wines.count > 0 %>
+
+    <div class="container mb-5 border rounded bg-light mt-5">
+        <h2 class="mt-4 mb-4 text-center">Listado de Vinos Disponibles</h2>
+
+        <table class="table table-bordered bg-light">
+
+            <thead class="table-primary">
+                <tr class="text-center">
+                    <th>Nombre</th>
+                    <th>Cepas</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @wines.each do |wine| %>
+                    <tr>
+                        <td><strong><%= wine.name %></strong></td>
+                        <td>
+                            <ul>
+                                <% wine.wine_strains.each do |wine_strain| %>
+                                    <li><%= wine_strain.strain.name %> (<%= wine_strain.percent %>%)</li>
+                                <% end %>
+                            </ul>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+
+        </table>
+    </div>
+
+<% else %>
+    <div class="text-center mt-5">
+        <h1>Bienvenido a la VinoTK</h1>
+        <h3>Aún no hay vinos disponibles</h3>
+    </div>
+<% end %>

@@ -1,10 +1,10 @@
 class WinesController < ApplicationController
-    before_action :authenticate_user!, except: :index  
+    before_action :authenticate_user!, except: :index
 
     def index
         @wines = Wine.all.includes([:strains, :wine_strains])
         @wine = Wine.new
-        @strains = Strain.all
+        @strains = Strain.all.order(:name, :asc)
     end
     
     def create

@@ -1,33 +1,59 @@
-<h1>Registro de cata de vinos</h1>
+<% if current_user && current_user.admin? %>
 
-<% if current_user && current_user.email == 'peter@vinos.com' %>
-    <%= render 'owner' %>
+    <div class="container">
+
+        <div class="container border rounded bg-light p-3 mt-5">
+            <h1 class="text-center mb-3">Registro de Nuevos Vinos</h1>
+
+            <%= form_with(model: @wine, local: true) do |f| %>
+                <div class="mb-3">
+                    <span class="d-flex flex-row">
+                        <div class="mr-3 mt-2">
+                            <%= f.label 'Nombre' %>
+                        </div>
+                        <%= f.text_field :name, class:'form-control', size:'40' %>
+                    </span>
+                </div>
+                
+                <% if @strains.count > 0 %>
+
+                    <p>Sólo ingresa los porcentajes de los campos seleccionados</p>
+                    
+                    <table class="table table-bordered">
+
+                        <% @strains.each do |strain| %> 
+                            <tr>
+                                <td>
+                                    <%= check_box(:wine, :strain_ids, {multiple: true}, strain.id, nil) %>
+                                    <%= strain.name %>
+                                </td>
+
+                                <td>
+                                    <input 
+                                        type="number" 
+                                        name="wine[strain_percent][]" 
+                                        id="wine_strain_percent_<%= strain.id %>" 
+                                        min="0"
+                                        max="100"
+                                        step="5"
+                                        >
+                                </td>
+                            </tr>
+                        <% end %>
+
+                    </table>
+                <% else %>
+                    <h5> No hay cepas disponibles </h5>
+                <% end %>
+
+                <div class="mt-4">
+                    <%= f.submit 'Guardar Vino' %>
+                </div>
+            <%end%>
+        </div>
+    </div>
 <% end %>
 
-<h2>Listado de vinos</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Cepas</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @wines.each do |wine| %>
-            <tr>
-                <td><%= wine.name %></td>
-                <td>
-                    <ul>
-                        <% wine.wine_strains.each do |wine_strain| %>
-                            <li><%= wine_strain.strain.name %>(<%= wine_strain.percent %>%)</li>
-                        <% end %>
-                    </ul>
-                </td>
-            </tr>
-        <% end %>
-    </tbody>
-
-</table>
-
+<div class="container mt-5">
+    <%= render 'wines' %>
+</div>

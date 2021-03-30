@@ -1,7 +1,5 @@
 <% if current_user && current_user.admin? %>
-
     <div class="container">
-
         <div class="container border rounded bg-light p-3 mt-5">
             <h1 class="text-center mb-3">Registro de Nuevos Vinos</h1>
 
@@ -17,10 +15,11 @@
                 
                 <% if @strains.count > 0 %>
 
-                    <p>Sólo ingresa los porcentajes de los campos seleccionados</p>
+                    <p class="text-info">Selecciona la cepa en la columna de la izquierda e ingresa su porcentaje en la columna de la derecha.</p>
                     
                     <table class="table table-bordered">
-
+                        <td><strong>Cepas Disponibles</strong></td>
+                        <td><strong>Porcentaje Mezcla</strong></td>
                         <% @strains.each do |strain| %> 
                             <tr>
                                 <td>
@@ -47,7 +46,7 @@
                 <% end %>
 
                 <div class="mt-4">
-                    <%= f.submit 'Guardar Vino' %>
+                    <%= f.submit 'Guardar Vino', class:'btn btn-primary' %>
                 </div>
             <%end%>
         </div>

@@ -1,0 +1,43 @@
+<%= form_with(model: @wine, local: true) do |f| %>
+
+    <div class="container rounded border bg-light p-3 mt-5">
+        <div class="field">
+            <h3>Nombre Vino</h3>
+            <%= f.text_field :name %>
+        </div>
+    </div>
+
+    <div class="container rounded border bg-light p-3 mt-3">
+        <div class="field">
+            <h3>Evaluación</h3>
+
+            <table class="table">
+                <thead>
+                    <th>Nombre Enólogo</th>
+                    <th>Evaluación</th>
+                </thead>
+
+                <tbody>
+                    <%= f.collection_check_boxes(:oenologist_ids, Oenologist.all.order('age DESC'), :id, :name) do |box| %>
+                        <%= box.label class:"label-chechbox" do %>
+                            <tr>
+                                <td>
+                                    <%=box.check_box + ' ' + box.text %>
+                                </td>
+                                <td>
+                                    <%= f.number_field '', min: 1, max: 10, name: 'wine[score][]' %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container p-3 mt-3">
+        <div class="actions">
+            <%= f.submit 'Actualizar Vino', class:'btn btn-primary' %>
+        </div>
+    </div>
+<% end %>

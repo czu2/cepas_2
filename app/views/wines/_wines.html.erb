@@ -9,8 +9,10 @@
                 <tr class="text-center">
                     <th>Nombre</th>
                     <th>Cepas</th>
-                    <th>Nota</th>
-                    <th>Acciones</th>
+                    <% if current_user && current_user.admin? %>
+                        <th>Enólogo / Puntaje</th>
+                        <th>Anotar Puntaje</th>
+                    <% end %>
                 </tr>
             </thead>
 
@@ -25,8 +27,16 @@
                                 <% end %>
                             </ul>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <% if current_user && current_user.admin? %>
+                            <td>
+                                <ul>
+                                    <% wine.wine_oenologists.each do |wo| %>
+                                        <p><%= wo.oenologist.name %> / <%= wo.score %> pts.</p>
+                                    <% end %>
+                                </ul>
+                            </td>
+                            <td><p class="text-center"><%= link_to '<i class="far fa-edit text-white btn btn-primary"></i>'.html_safe, edit_wine_path(wine) %></p></td>
+                        <% end %>
                     </tr>
                 <% end %>
             </tbody>

@@ -12,6 +12,9 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <% if user_signed_in? %>
+                            <% if current_user && current_user.admin? %>
+                                <%= link_to 'Enólogos', oenologists_path, class:"dropdown-item" %>
+                            <% end %>
                             <%= link_to  "Editar perfil", edit_user_registration_path, class:"dropdown-item" %>
                             <%= link_to  "Cerrar sesión", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
                         <% else %>
